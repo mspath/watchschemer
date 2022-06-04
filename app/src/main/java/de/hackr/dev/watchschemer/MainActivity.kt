@@ -23,11 +23,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.wear.compose.material.*
 import de.hackr.dev.watchschemer.theme.WatchSchemerTheme
-import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,57 +48,46 @@ fun WatchSchemer() {
             verticalArrangement = Arrangement.Center
         ) {
             val listState = rememberScalingLazyListState()
+            val size = 10
 
             ScalingLazyColumn(
                 modifier = Modifier.fillMaxSize(),
                 autoCentering = AutoCenteringParams(itemIndex = 0),
                 state = listState
             ) {
-                item { Schemer() }
-                item { Spacer(modifier = Modifier.height(8.dp)) }
-                item { Schemer() }
-                item { Spacer(modifier = Modifier.height(8.dp)) }
-                item { Schemer() }
-                item { Spacer(modifier = Modifier.height(8.dp)) }
-                item { Schemer() }
-                item { Spacer(modifier = Modifier.height(8.dp)) }
+
+                repeat(size) {
+                    item { Coloroidable() }
+                    item { Spacer(modifier = Modifier.height(8.dp)) }
+                }
             }
         }
     }
 }
 
 @Composable
-fun Schemer() {
-    val r1 = Random.nextInt(10, 245)
-    val g1 = Random.nextInt(10, 245)
-    val b1 = Random.nextInt(10, 245)
-    val stop1 = Random.nextInt(10, 150)
-    val r2 = Random.nextInt(10, 245)
-    val g2 = Random.nextInt(10, 245)
-    val b2 = Random.nextInt(10, 245)
-    val stop2 = Random.nextInt(stop1, 180)
-    val r3 = Random.nextInt(10, 245)
-    val g3 = Random.nextInt(10, 245)
-    val b3 = Random.nextInt(10, 245)
-    val stop3 = 220
+fun Coloroidable() {
+
+    val coloroid = Generator.randomColoroid()
+
     Column(Modifier.height(220.dp)) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color(r1, g1, b1))
-                .height(stop1.dp)
+                .background(coloroid.color1)
+                .fillMaxHeight(coloroid.stop1)
         )
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color(r2, g2, b2))
-                .height((stop2 - stop1).dp)
+                .background(coloroid.color2)
+                .fillMaxHeight(coloroid.stop2 - coloroid.stop1)
         )
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color(r3, g3, b3))
-                .height((stop3 - stop2).dp)
+                .background(coloroid.color3)
+                .fillMaxHeight(1 - coloroid.stop2)
         )
     }
 }
