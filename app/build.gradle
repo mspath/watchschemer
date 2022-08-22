@@ -29,7 +29,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
-        useIR = true
     }
     buildFeatures {
         compose true
@@ -46,28 +45,12 @@ android {
 
 dependencies {
     // General compose dependencies
-    implementation libs.androidx.activity.compose
-    implementation libs.compose.ui.tooling.preview
+    implementation "androidx.activity:activity-compose:1.5.1"
+    implementation "androidx.compose.ui:ui-tooling-preview:1.2.1"
 
     // Compose for Wear OS Dependencies
-    // NOTE: DO NOT INCLUDE a dependency on androidx.compose.material:material.
-    // androidx.wear.compose:compose-material is designed as a replacement not an addition to
-    // androidx.compose.material:material. If there are features from that you feel are missing from
-    // androidx.wear.compose:compose-material please raise a bug to let us know:
-    // https://issuetracker.google.com/issues/new?component=1077552&template=1598429&pli=1
-    implementation libs.wear.compose.material
+    implementation "androidx.wear.compose:compose-material:1.0.0"
 
     // Foundation is additive, so you can use the mobile version in your Wear OS app.
-    implementation libs.wear.compose.foundation
-
-    // If you are using Compose Navigation, use the Wear OS version (NOT the
-    // androidx.navigation:navigation-compose version), that is, uncomment the line below.
-//    implementation libs.wear.compose.navigation
-
-    // Testing
-    testImplementation libs.junit
-    androidTestImplementation libs.test.ext.junit
-    androidTestImplementation libs.test.espresso.core
-    androidTestImplementation libs.compose.ui.test.junit4
-    debugImplementation libs.compose.ui.tooling
+    implementation "androidx.wear.compose:compose-foundation:1.0.0"
 }
