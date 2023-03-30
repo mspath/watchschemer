@@ -6,10 +6,10 @@ a hello world wear os project.
 
 Environment
 
-- Kotlin 1.7.10
-- Compose 1.3.1
-- Android Studio Dolphin 2021.3.1
-- Gradle Plugin 7.3.1
+- Kotlin 1.8.0
+- Compose Compiler 1.4.1
+- Android Studio Electric Eel 2022.1.1
+- Gradle Plugin 7.4.2
 
 ----
 
@@ -17,5 +17,5 @@ Environment
 language: kotlin
 repo: watchschemer
 status: archived
-updated: 2022-12-03
+updated: 2023-03-30
 ```
