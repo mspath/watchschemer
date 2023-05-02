@@ -24,11 +24,11 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose true
@@ -41,13 +41,14 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    namespace 'de.hackr.dev.watchschemer'
 }
 
 dependencies {
 
     // General compose dependencies
-    implementation "androidx.activity:activity-compose:1.7.0"
-    implementation "androidx.compose.ui:ui-tooling-preview:1.4.0"
+    implementation "androidx.activity:activity-compose:1.7.1"
+    implementation "androidx.compose.ui:ui-tooling-preview:1.4.2"
 
     // Compose for Wear OS Dependencies
     implementation "androidx.wear.compose:compose-material:1.1.2"
